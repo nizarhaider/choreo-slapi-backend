@@ -1,0 +1,52 @@
+openapi: 3.0.3
+info:
+  title: SLAPI Indicators API
+  description: An API for accessing indicators data
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Choreo
+  url: https://choreo.dev
+servers:
+  - url: http://localhost:5000
+tags:
+  - name: slapi
+    description: slapi indicators
+paths:
+  /slapi_indicators:
+    get:
+      summary: Get indicators data
+      operationId: getIndicators
+      parameters:
+        - name: collection_name
+          in: query
+          description: Name of the collection
+          required: true
+          schema:
+            type: string
+        - name: date
+          in: query
+          description: Date of the data
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  indicators:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        value:
+                          type: number
