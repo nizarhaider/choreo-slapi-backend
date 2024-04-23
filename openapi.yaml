@@ -15,7 +15,7 @@ tags:
   - name: slapi
     description: slapi indicators
 paths:
-  /slapi_indicators:
+  /api/data:
     get:
       summary: Get indicators data
       operationId: getIndicators
